@@ -1,0 +1,7 @@
+.days {
+    display: grid;
+    grid-template-columns: 0.8fr 0.7fr 1fr 1fr;
+    padding: 5px 5px;
+    background-color: rgba(255, 255, 255, 0.5);
+    margin: 2px;
+}

@@ -1,0 +1,15 @@
+.hourly {
+    display: flex;
+    flex-basis: 90px;
+    width: 100%;
+    height: 150px;
+    background-color: aquamarine;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+}
+.hourly > * {
+    flex: 1 0 90px;
+}
+.hourly::-webkit-scrollbar {
+    display: none;
+  }
