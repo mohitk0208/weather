@@ -18,7 +18,7 @@ const App = () => {
 	const getWeather = async (city) => {
 		try {
 			const currentResponseData = await sendRequest(
-				`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=cffe06b6b4a0b5f798725a26aba2a2c3`,
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
 				"GET"
 			);
 			setCurrent(currentResponseData);
@@ -26,7 +26,7 @@ const App = () => {
 			const lon = currentResponseData.coord.lon;
 
 			const completeWeatherResponseData = await sendRequest(
-				`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=cffe06b6b4a0b5f798725a26aba2a2c3`,
+				`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
 				"GET"
 			);
 
