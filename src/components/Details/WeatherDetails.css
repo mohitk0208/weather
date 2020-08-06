@@ -1,14 +1,25 @@
+.details-container {
+    background-color: rgba(0, 0, 0, 0.4);
+    margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    color: #ffffff;
+}
+
 .details {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr ;
+    grid-template-rows: 1fr 1fr;
     gap: 10px 10px;
-    width: 80%;
+    width: 90%;
     margin: auto;
-    background-color: sandybrown;
-    padding: 10px;
+    padding-bottom: 20px;
 }
 
 .heading {
-    padding-left: 10px;
+    font-weight: 500;
+    letter-spacing: 0.01rem;
+    font-size: 1.3rem;
+    line-height: 2rem;
+    margin-bottom: 1rem;
 }

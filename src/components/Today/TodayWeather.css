@@ -1,10 +1,14 @@
 .today {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 47vh;
-    background-color: saddlebrown;
+    width: 96%;
+    height: 45vh;
+    background-color: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
     justify-content: space-between;
+    padding: 10px;
+    margin: 0 2% 1vh;
+    border-radius: 10px;
 }
 
 .today form #cityname {
@@ -12,12 +16,13 @@
     left: 50%;
     top: 10px;
     transform: translate(-50%,0);
-    border-radius: 10px;
+    border-radius: 40px;
     text-align: center;
     border: 0;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     opacity: 0.6;
-    line-height: 1.5rem;
+    line-height: 2rem;
+    width: 50%;
 }
 
 .today form #cityname:focus {
@@ -53,6 +58,7 @@
 }
 .current__temp-minmax {
     color: #ffffff;
+    font-size: 1.1rem;
 }
 
 .current__weather {
@@ -61,10 +67,12 @@
     color: #ffffff;
     justify-content: space-around;
     line-height: 1.5rem;
+    align-self: center;
+    text-align: right;
 }
 
 .current__weather-main {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
 }
 
 .current__weather-description {

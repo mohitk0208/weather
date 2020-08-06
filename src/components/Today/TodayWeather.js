@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import "./TodayWeather.css";
 
@@ -9,9 +9,11 @@ const getDay = (time) => {
 
 const TodayWeather = ({ current, getWeather }) => {
 	const [value, setValue] = useState("");
+	const inputRef = useRef(null);
 
 	const handleCityWeather = (e) => {
 		e.preventDefault();
+		inputRef.current.blur();
 		getWeather(value);
 	};
 
@@ -24,6 +26,7 @@ const TodayWeather = ({ current, getWeather }) => {
 					placeholder="CITYNAME"
 					onChange={(e) => setValue(e.target.value)}
 					value={value}
+					ref={inputRef}
 				/>
 			</form>
 			<div className="current">
@@ -57,25 +60,3 @@ const TodayWeather = ({ current, getWeather }) => {
 };
 
 export default TodayWeather;
-
-//cffe06b6b4a0b5f798725a26aba2a2c3
-
-// useEffect(() => {
-// 	const getWeatherData = async () => {
-// 		try {
-// 			const response = await fetch(
-// 				"http://api.openweathermap.org/data/2.5/weather?q=ranchi,jharkhand&units=metric&appid=cffe06b6b4a0b5f798725a26aba2a2c3",
-// 				{
-// 					method: "GET",
-// 				}
-// 			);
-
-// 			const responseData = await response.json();
-// 			console.log(responseData.main.temp + " C");
-// 		} catch (err) {
-// 			console.log(err);
-// 		}
-// 	};
-
-// 	getWeatherData();
-// });

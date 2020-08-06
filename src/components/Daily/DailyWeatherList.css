@@ -1,6 +1,16 @@
 .daily {
-    margin: 10px;
-    background-color: rosybrown;
+    margin: 5px;
+    background-color:rgba(0, 0, 0, 0.4);
+    padding: 7px;
+    border-radius: 10px;
+    color: #ffffff;
+}
+
+.daily h3 {
+    font-weight: 500;
+    letter-spacing: 0.02rem;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
 }
 
 .daily__data {
