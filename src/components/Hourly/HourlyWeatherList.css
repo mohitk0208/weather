@@ -6,7 +6,13 @@
     background-color: rgba(0, 0, 0, 0.4);
     overflow-x: scroll;
     margin-bottom: 10px;
+    transition: height 0.25s ease-in-out;
 }
+
+.hourly.initial {
+    height: 0;
+}
+
 .hourly > * {
     flex: 1 0 90px;
 }

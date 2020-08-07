@@ -9,9 +9,13 @@ const getTime = (time) => {
 	return x.slice(0, x.length - 3) + " " + y;
 };
 
-const HourlyWeather = ({ weather }) => {
+const HourlyWeather = ({ weather, delay }) => {
+	// const styles = {
+	// 	transitionDelay: delay,
+	// };
+
 	return (
-		<div className="hour-weather">
+		<div className={`hour-weather`} >
 			<div className="hour-weather__time">{getTime(weather.dt)}</div>
 			<div className="hour-weather__icon">
 				<img
