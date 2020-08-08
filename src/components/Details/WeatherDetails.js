@@ -1,12 +1,8 @@
 import React from "react";
+import { toFahrenheit } from "../helpers/functions";
 
 import DetailsBlock from "./DetailsBlock";
 import "./WeatherDetails.css";
-const toFahrenheit = (celcius) => {
-	console.log(celcius);
-	const f = Number(celcius) * (9 / 5) + 32;
-	return f % 1 === 0 ? f : f.toFixed(2);
-};
 
 const WeatherDetails = ({ current, unit, reset }) => {
 	return (

@@ -12,7 +12,7 @@ html {
     letter-spacing: 0.5px;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    /* background-position: center top; */
+    background-position: center;
     background-size: cover;
     overflow: hidden;
     /* font-size: 12px; */

@@ -9,12 +9,10 @@ export const usePosition = () => {
 			lat: coords.latitude,
 			lon: coords.longitude,
         });
-        console.log(coords);
 	};
 
 	const OnError = (error) => {
 		setPosError(error.message);
-		console.log(error);
 	};
 
 	const clearPosError = () => {

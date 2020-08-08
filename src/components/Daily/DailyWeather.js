@@ -1,20 +1,7 @@
 import React from "react";
+import {toFahrenheit,getDay,getDate} from "../helpers/functions"
 
 import "./DailyWeather.css";
-
-const getDate = (time) => {
-	const x = new Date(time * 1000).toDateString().split(" ");
-	return x[1] + " " + x[2];
-};
-const getDay = (time) => {
-	return new Date(time * 1000).toDateString().split(" ")[0];
-};
-
-const toFahrenheit = (celcius) => {
-	console.log(celcius);
-	const f = Number(celcius) * (9 / 5) + 32;
-	return f % 1 === 0 ? f : f.toFixed(2);
-};
 
 const DailyWeather = ({ weather, day, unit }) => {
 	return (

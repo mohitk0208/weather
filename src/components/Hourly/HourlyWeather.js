@@ -1,4 +1,5 @@
 import React from "react";
+import {toFahrenheit} from "../helpers/functions"
 
 import "./HourlyWeather.css";
 const getTime = (time) => {
@@ -9,16 +10,8 @@ const getTime = (time) => {
 	return x.slice(0, x.length - 3) + " " + y;
 };
 
-const toFahrenheit = (celcius) => {
-	console.log(celcius);
-	const f = Number(celcius) * (9 / 5) + 32;
-	return f % 1 === 0 ? f : f.toFixed(2);
-};
-const HourlyWeather = ({ weather, delay, unit }) => {
-	// const styles = {
-	// 	transitionDelay: delay,
-	// };
 
+const HourlyWeather = ({ weather, delay, unit }) => {
 	return (
 		<div className={`hour-weather`}>
 			<div className="hour-weather__time">{getTime(weather.dt)}</div>

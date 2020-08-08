@@ -1,17 +1,7 @@
 import React, { useState, useRef } from "react";
+import { toFahrenheit, getDay } from "../helpers/functions";
 
 import "./TodayWeather.css";
-
-const getDay = (time) => {
-	const date = new Date(time * 1000).toDateString();
-	return date.split(" ")[0];
-};
-
-const toFahrenheit = (celcius) => {
-	console.log(celcius);
-	const f = Number(celcius) * (9 / 5) + 32;
-	return f % 1 === 0 ? f : f.toFixed(2);
-};
 
 const TodayWeather = ({
 	current,
@@ -34,7 +24,7 @@ const TodayWeather = ({
 
 	const locationHandler = async () => {
 		setResetHandler(true);
-		setValue("")
+		setValue("");
 		await getWeatherByLocation();
 		setResetHandler(false);
 	};
