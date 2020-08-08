@@ -10,7 +10,13 @@ const getDay = (time) => {
 	return new Date(time * 1000).toDateString().split(" ")[0];
 };
 
-const DailyWeather = ({ weather, day }) => {
+const toFahrenheit = (celcius) => {
+	console.log(celcius);
+	const f = Number(celcius) * (9 / 5) + 32;
+	return f % 1 === 0 ? f : f.toFixed(2);
+};
+
+const DailyWeather = ({ weather, day, unit }) => {
 	return (
 		<div className="days">
 			<div className="days__date">{getDate(weather.dt)}</div>
@@ -23,7 +29,9 @@ const DailyWeather = ({ weather, day }) => {
 			</div>
 			<div className="days__main">{weather.weather[0].main}</div>
 			<div className="days__minmax">
-				{weather.temp.max}/{weather.temp.max}&deg;C
+				{unit ? weather.temp.max : toFahrenheit(weather.temp.max)}/
+				{unit ? weather.temp.min : toFahrenheit(weather.temp.min)}&deg;
+				{unit ? "C" : "F"}
 			</div>
 		</div>
 	);

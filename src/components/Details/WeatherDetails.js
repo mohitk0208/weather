@@ -2,18 +2,31 @@ import React from "react";
 
 import DetailsBlock from "./DetailsBlock";
 import "./WeatherDetails.css";
+const toFahrenheit = (celcius) => {
+	console.log(celcius);
+	const f = Number(celcius) * (9 / 5) + 32;
+	return f % 1 === 0 ? f : f.toFixed(2);
+};
 
-const WeatherDetails = ({ current }) => {
+const WeatherDetails = ({ current, unit, reset }) => {
 	return (
 		<>
-			<div className="details-container">
-				<h2 className="heading">Weather Details </h2>
-				{current && (
+			<div
+				className={`details-container ${!current && "initial"} ${
+					reset && "initial"
+				}`}
+			>
+				{current && !reset && <h2 className="heading">Weather Details </h2>}
+				{current && !reset && (
 					<div className="details">
 						<DetailsBlock
 							category={"temperatre Felt"}
-							value={current.main.feels_like}
-							unit={` °C`}
+							value={
+								unit
+									? current.main.feels_like
+									: toFahrenheit(current.main.feels_like)
+							}
+							unit={unit ? "°C" : "°F"}
 						/>
 						<DetailsBlock
 							category={"Visibility"}

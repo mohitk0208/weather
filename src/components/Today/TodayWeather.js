@@ -7,30 +7,34 @@ const getDay = (time) => {
 	return date.split(" ")[0];
 };
 
+const toFahrenheit = (celcius) => {
+	console.log(celcius);
+	const f = Number(celcius) * (9 / 5) + 32;
+	return f % 1 === 0 ? f : f.toFixed(2);
+};
+
 const TodayWeather = ({
 	current,
 	getWeatherByLocation,
 	getWeather,
 	setResetHandler,
 	reset,
+	unit,
+	setUnit,
 }) => {
 	const [value, setValue] = useState("");
-	// const { posError, lat, lon } = usePosition();
 	const inputRef = useRef(null);
 
 	const handleCityWeather = async (e) => {
 		e.preventDefault();
 		inputRef.current.blur();
 		setResetHandler(true);
-		await getWeather(value);
-		setResetHandler(false);
+		await getWeather(value, unit);
 	};
 
 	const locationHandler = async () => {
-		// console.log("lat", lat);
-		// console.log("lon", lon);
-		// console.log("error", posError);
 		setResetHandler(true);
+		setValue("")
 		await getWeatherByLocation();
 		setResetHandler(false);
 	};
@@ -50,18 +54,47 @@ const TodayWeather = ({
 					ref={inputRef}
 				/>
 			</form>
+			<input
+				type="checkbox"
+				id="unit-choice"
+				checked={unit}
+				onChange={(e) => setUnit(e.target.checked)}
+				hidden
+			/>
+			<label htmlFor="unit-choice">
+				<div className="unit-choice">
+					<div className={`unit-value ${!unit ? "active" : "disabled"}`}>
+						&deg;F
+					</div>
+					<div className={`unit-value ${unit ? "active" : "disabled"}`}>
+						&deg;C
+					</div>
+					<div
+						className={`unit-cover ${unit ? "celcius" : "fahrenheit"}`}
+					></div>
+				</div>
+			</label>
 			{!reset && (
 				<div className={`current`}>
 					{current && (
 						<div className="current__temp">
 							<div className="current__temp-current">
-								<span className="temp">{current.main.temp}</span>
-								<span className="unit"> &deg;C</span>
+								<span className="temp">
+									{unit ? current.main.temp : toFahrenheit(current.main.temp)}
+								</span>
+								<span className="unit">&deg;{unit ? "C" : "F"}</span>
 							</div>
 							<div className="current__temp-minmax">
 								<span>
-									{current.main.temp_min} &deg;C / {current.main.temp_max}{" "}
-									&deg;C{" "}
+									{unit
+										? current.main.temp_min
+										: toFahrenheit(current.main.temp_min)}
+									&deg;{unit ? "C" : "F"}/
+									{unit
+										? current.main.temp_max
+										: toFahrenheit(current.main.temp_max)}
+									&deg;
+									{unit ? "C" : "F"}
 								</span>
 								<span>{"  " + getDay(current.dt)}</span>
 							</div>

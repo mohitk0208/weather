@@ -17,6 +17,7 @@ const App = () => {
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 	const { lat, lon, posError, clearPosError } = usePosition();
 	const [reset, setReset] = useState(false);
+	const [u, setU] = useState(true);
 
 	const getWeather = async (city) => {
 		try {
@@ -35,9 +36,8 @@ const App = () => {
 
 			setHourly(completeWeatherResponseData.hourly);
 			setDaily(completeWeatherResponseData.daily);
-		} catch (err) {
-			// console.log(err);
-		}
+			setResetHandler(false);
+		} catch (err) {}
 	};
 
 	const getWeatherByLocation = async () => {
@@ -76,10 +76,12 @@ const App = () => {
 					reset={reset}
 					setResetHandler={setResetHandler}
 					getWeatherByLocation={getWeatherByLocation}
+					unit={u}
+					setUnit={setU}
 				/>
-				<HourlyWeatherList weathers={hourly} reset={reset} />
-				{daily && <DailyWeatherList weathers={daily} />}
-				{current && <WeatherDetails current={current} />}
+				<HourlyWeatherList weathers={hourly} reset={reset} unit={u} />
+				<DailyWeatherList weathers={daily} unit={u} reset={reset} />
+				<WeatherDetails current={current} unit={u} reset={reset} />
 			</div>
 		</>
 	);
