@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import TodayWeather from "./components/Today/TodayWeather";
 import HourlyWeatherList from "./components/Hourly/HourlyWeatherList";
@@ -17,6 +17,9 @@ const App = () => {
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 	const { lat, lon, posError, clearPosError } = usePosition();
 	const [reset, setReset] = useState(false);
+	const [background, setBackground] = useState(
+		"https://332y2620ed2r2nv2m5pbphm1-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/17960027_web1_190731-ok-shu-weather-tues.jpg"
+	);
 	const [u, setU] = useState(true);
 
 	const getWeather = async (city) => {
@@ -64,12 +67,80 @@ const App = () => {
 		setReset(value);
 	};
 
+	useEffect(() => {
+		if (current) {
+			console.log(current.weather[0].id);
+
+			// console.log(Number((Number(current.weather[0].id) / 100).toFixed(0)));
+
+			switch (Number((Number(current.weather[0].id) / 100).toFixed(0))) {
+				case 2:
+					setBackground(
+						"https://p0.pikist.com/photos/356/229/lightning-bolt-thunderstorm-thunderbolt-thunder-storm-power-weather-dangerous.jpg"
+					);
+					break;
+				case 3:
+					setBackground(
+						"https://p0.pikist.com/photos/677/746/rain-drizzle-galau-lockscreen-wallpaper.jpg"
+					);
+					break;
+				case 5:
+					setBackground(
+						"https://i.pinimg.com/originals/eb/d1/62/ebd162ebc2dec0a1dae25b83abc038cb.jpg"
+					);
+					break;
+				case 6:
+					setBackground(
+						"https://www.wallpaperup.com/uploads/wallpapers/2017/07/09/1094016/714a7462d67cb819308786e7c603350e-1000.jpg"
+					);
+					break;
+				case 7:
+					if (Number(current.weather[0].id) === 721) {
+						setBackground(
+							"https://live.staticflickr.com/1680/24602190263_2eebc12a31_b.jpg"
+						);
+					} else if (Number(current.weather[0].id) === 741) {
+						setBackground(
+							"https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
+						);
+					} else {
+						setBackground(
+							"https://live.staticflickr.com/1680/24602190263_2eebc12a31_b.jpg"
+						);
+					}
+					break;
+				case 8:
+					if (Number(current.weather[0].id) === 800) {
+						setBackground(
+							"https://p0.pikist.com/photos/997/770/sky-sun-lake-blue-nature-summer-sunlight-sunny-light.jpg"
+						);
+					} else {
+						setBackground(
+							"https://storage.needpix.com/rsynced_images/clouds-4258726_1280.jpg"
+						);
+					}
+					break;
+				default:
+					// console.log("yess");
+					setBackground(
+						"https://332y2620ed2r2nv2m5pbphm1-wpengine.netdna-ssl.com/wp-content/uploads/2019/08/17960027_web1_190731-ok-shu-weather-tues.jpg"
+					);
+					break;
+			}
+		}
+	}, [current]);
+
 	return (
 		<>
 			{!!!error && <ErrorModal error={posError} onClear={clearPosError} />}
 			<ErrorModal error={error} onClear={clearError} />
 			{isLoading && <LoadingSpinner overlay />}
-			<div className="container">
+			<div
+				className="container"
+				style={{
+					backgroundImage: `url(${background})`,
+				}}
+			>
 				<TodayWeather
 					getWeather={getWeather}
 					current={current}
