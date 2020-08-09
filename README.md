@@ -5,9 +5,9 @@ This project is using [openweathermap api](https://openweathermap.org/api) to ge
 
 **The Weather Data includes:**
 
--current weather data.
--hourly weather report for next 48 hours.
--weather details for next 7 days.
+- current weather data.
+- hourly weather report for next 48 hours.
+- weather details for next 7 days.
 
 All the information is nicely represented on a glassy look webpage with frosted & blury background to make the details clearlly visible.
 
