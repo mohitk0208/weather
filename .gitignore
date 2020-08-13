@@ -28,3 +28,4 @@ firebase.json
 .env
 .env.production
 .firebase
+.vscode
