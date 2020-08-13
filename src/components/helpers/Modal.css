@@ -5,7 +5,6 @@
 	z-index: 100;
 	background-color: rgba(255, 255, 255, 0.2);
 	overflow: hidden;
-	transition: all 0.25s ease-in-out;
 }
 .modal-backdrop.show {
 	height: 100%;
@@ -21,7 +20,7 @@
 	transform: translate(-50%, -102%);
 	background-color: rgba(250, 36, 36, 0.2);
 	backdrop-filter: blur(20px);
-    transition: all 0.25s linear;
+    transition: top 0.25s linear;
     border-radius: 10px;
 }
 

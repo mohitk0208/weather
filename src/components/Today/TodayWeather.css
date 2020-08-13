@@ -78,7 +78,7 @@
 	background-color: rgba(255, 255, 255, 1);
 	top: 50%;
 	transform: translate(0, -50%);
-	transition: all 0.25s ease;
+	transition: transform 0.25s ease;
 	border-radius: 10px;
 	box-shadow: 0.1rem 0.1rem 8px #ffffff,-0.1rem -0.1rem 3px #ffffff;
 }

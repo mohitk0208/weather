@@ -17,8 +17,6 @@
 	top: 10%;
 	transform: translate(-50%, 0);
 	animation: rotate 2s linear infinite;
-    transition: all 0;
-
 }
 
 @keyframes rotate {
