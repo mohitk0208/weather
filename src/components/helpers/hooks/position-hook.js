@@ -26,7 +26,7 @@ export const usePosition = () => {
 			return;
 		}
 
-		const watcher = geo.watchPosition(onChange, OnError,{enableHighAccuracy:true});
+		const watcher = geo.watchPosition(onChange, OnError);
 
 		return () => geo.clearWatch(watcher);
 	}, []);
