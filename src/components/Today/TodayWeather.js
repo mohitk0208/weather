@@ -53,15 +53,15 @@ const TodayWeather = ({
 			/>
 			<label htmlFor="unit-choice">
 				<div className="unit-choice">
-					<div className={`unit-value ${!unit ? "active" : "disabled"}`}>
+					<div
+						className={`unit-cover ${!unit ? "celcius" : "fahrenheit"}`}
+					></div>
+					<div className={`unit-value f ${!unit ? "active" : "disabled"}`}>
 						&deg;F
 					</div>
-					<div className={`unit-value ${unit ? "active" : "disabled"}`}>
+					<div className={`unit-value c ${unit ? "active" : "disabled"}`}>
 						&deg;C
 					</div>
-					<div
-						className={`unit-cover ${unit ? "celcius" : "fahrenheit"}`}
-					></div>
 				</div>
 			</label>
 			{!reset && (
