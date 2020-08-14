@@ -1,5 +1,5 @@
 import React from "react";
-import {toFahrenheit,getDay,getDate} from "../helpers/functions"
+import {celciusTofahrenheit,getDay,getDate} from "../helpers/functions"
 
 import "./DailyWeather.css";
 
@@ -16,8 +16,8 @@ const DailyWeather = ({ weather, day, unit }) => {
 			</div>
 			<div className="days__main">{weather.weather[0].main}</div>
 			<div className="days__minmax">
-				{unit ? weather.temp.max : toFahrenheit(weather.temp.max)}/
-				{unit ? weather.temp.min : toFahrenheit(weather.temp.min)}&deg;
+				{unit ? weather.temp.max : celciusTofahrenheit(weather.temp.max)}/
+				{unit ? weather.temp.min : celciusTofahrenheit(weather.temp.min)}&deg;
 				{unit ? "C" : "F"}
 			</div>
 		</div>

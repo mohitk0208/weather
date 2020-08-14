@@ -1,6 +1,17 @@
-export const toFahrenheit = (celcius) => {
-	const f = Number(celcius) * (9 / 5) + 32;
-	return f % 1 === 0 ? f : f.toFixed(2);
+/**
+ * function to convert temperature from degree celcius to fahrenheit.
+ * with decimal place rounded to two places.
+ * uses formula f = c*(9/5) + 32
+ * @param {value in celcius } celciusValue
+ * @returns string
+ */
+export const celciusTofahrenheit = (celciusValue) => {
+	if (celciusValue === null || celciusValue === undefined) return;
+	const fahrenheitValue = Number(celciusValue) * (9 / 5) + 32;
+	return (fahrenheitValue % 1 === 0
+		? fahrenheitValue
+		: fahrenheitValue.toFixed(2)
+	).toString();
 };
 
 export const getDay = (time) => {

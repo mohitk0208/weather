@@ -1,5 +1,5 @@
 import React from "react";
-import { toFahrenheit } from "../helpers/functions";
+import { celciusTofahrenheit } from "../helpers/functions";
 
 import DetailsBlock from "./DetailsBlock";
 import "./WeatherDetails.css";
@@ -20,7 +20,7 @@ const WeatherDetails = ({ current, unit, reset }) => {
 							value={
 								unit
 									? current.main.feels_like
-									: toFahrenheit(current.main.feels_like)
+									: celciusTofahrenheit(current.main.feels_like)
 							}
 							unit={unit ? "°C" : "°F"}
 						/>
