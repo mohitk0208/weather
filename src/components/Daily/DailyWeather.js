@@ -1,12 +1,12 @@
 import React from "react";
-import {celciusTofahrenheit,getDayFromTimeInSeconds,getDate} from "../helpers/functions"
+import {celciusTofahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSeconds} from "../helpers/functions"
 
 import "./DailyWeather.css";
 
 const DailyWeather = ({ weather, day, unit }) => {
 	return (
 		<div className="days">
-			<div className="days__date">{getDate(weather.dt)}</div>
+			<div className="days__date">{getMonthAndDateFromTimeInSeconds(weather.dt)}</div>
 			<div className="days__day">{day ? day : getDayFromTimeInSeconds(weather.dt)}</div>
 			<div className="days__icon">
 				<img
