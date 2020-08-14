@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { celciusTofahrenheit, getDay } from "../helpers/functions";
+import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../helpers/functions";
 
 import "./TodayWeather.css";
 
@@ -86,7 +86,7 @@ const TodayWeather = ({
 									&deg;
 									{unit ? "C" : "F"}
 								</span>
-								<span>{"  " + getDay(current.dt)}</span>
+								<span>{"  " + getDayFromTimeInSeconds(current.dt)}</span>
 							</div>
 						</div>
 					)}

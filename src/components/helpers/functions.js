@@ -14,9 +14,11 @@ export const celciusTofahrenheit = (celciusValue) => {
 	).toString();
 };
 
-export const getDay = (time) => {
-	return new Date(time * 1000).toDateString().split(" ")[0];
-};
+/**
+ * function to get day from time in seconds since 1 jan 1970
+ * @param {string} timeInSeconds value of time in seconds from 1 jan 1970
+ */
+export const getDayFromTimeInSeconds = (timeInSeconds) => new Date(timeInSeconds * 1000).toDateString().split(" ")[0];
 
 export const getDate = (time) => {
 	const x = new Date(time * 1000).toDateString().split(" ");
