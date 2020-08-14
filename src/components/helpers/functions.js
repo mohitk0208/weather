@@ -11,3 +11,11 @@ export const getDate = (time) => {
 	const x = new Date(time * 1000).toDateString().split(" ");
 	return x[1] + " " + x[2];
 };
+
+export const getTime = (time) => {
+	const t = new Date(time * 1000).toLocaleTimeString();
+	const x = t.split(" ")[0];
+	const y = t.split(" ")[1];
+
+	return x.slice(0, x.length - 3) + " " + y;
+};

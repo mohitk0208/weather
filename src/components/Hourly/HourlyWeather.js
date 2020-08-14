@@ -1,15 +1,7 @@
 import React from "react";
-import {toFahrenheit} from "../helpers/functions"
+import {toFahrenheit,getTime} from "../helpers/functions"
 
 import "./HourlyWeather.css";
-const getTime = (time) => {
-	const t = new Date(time * 1000).toLocaleTimeString();
-	const x = t.split(" ")[0];
-	const y = t.split(" ")[1];
-
-	return x.slice(0, x.length - 3) + " " + y;
-};
-
 
 const HourlyWeather = ({ weather, delay, unit }) => {
 	return (
