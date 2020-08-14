@@ -3,7 +3,7 @@
  * with decimal place rounded to two places.
  * uses formula f = c*(9/5) + 32
  * @param {string | Number} celciusValue
- * @return {string}
+ * @return {string} fahrenheit value
  */
 export const celciusTofahrenheit = (celciusValue) => {
 	if (celciusValue === null || celciusValue === undefined) return;
@@ -17,7 +17,7 @@ export const celciusTofahrenheit = (celciusValue) => {
 /**
  * function to get day from time in seconds since 1 jan 1970
  * @param {string} timeInSeconds value of time in seconds from 1 jan 1970
- * @return {string}
+ * @return {string} Eg: Fri
  */
 export const getDayFromTimeInSeconds = (timeInSeconds) => {
 	if (timeInSeconds === null || timeInSeconds === undefined) return;
@@ -35,10 +35,15 @@ export const getMonthAndDateFromTimeInSeconds = (timeInSeconds) => {
 	return `${date[1]} ${date[2]}`;
 };
 
-export const getTime = (time) => {
-	const t = new Date(time * 1000).toLocaleTimeString();
-	const x = t.split(" ")[0];
-	const y = t.split(" ")[1];
-
-	return x.slice(0, x.length - 3) + " " + y;
+/**
+ * get time string without the seconds in it( in AM or PM)
+ * @param {string} timeInSeconds value of time in seconds from 1 jan 1970
+ * @return {string} Eg: 12:13 PM
+ */
+export const getTimeWithoutSecondsFromTimeInSeconds = (timeInSeconds) => {
+	if (timeInSeconds === null || timeInSeconds === undefined) return;
+	const ArrayOfTime = new Date(timeInSeconds * 1000).toLocaleTimeString().split(" ");
+	const timeValues = ArrayOfTime[0].split(":");
+	const amOrPm = ArrayOfTime[1];
+	return `${timeValues[0]}:${timeValues[1]} ${amOrPm}`
 };

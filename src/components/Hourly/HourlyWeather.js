@@ -1,12 +1,12 @@
 import React from "react";
-import {celciusTofahrenheit,getTime} from "../helpers/functions"
+import {celciusTofahrenheit,getTimeWithoutSecondsFromTimeInSeconds} from "../helpers/functions"
 
 import "./HourlyWeather.css";
 
 const HourlyWeather = ({ weather, delay, unit }) => {
 	return (
 		<div className={`hour-weather`}>
-			<div className="hour-weather__time">{getTime(weather.dt)}</div>
+			<div className="hour-weather__time">{getTimeWithoutSecondsFromTimeInSeconds(weather.dt)}</div>
 			<div className="hour-weather__icon">
 				<img
 					src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
