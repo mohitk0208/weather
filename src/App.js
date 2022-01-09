@@ -11,7 +11,7 @@ import { useWeather } from "./context/weatherContext";
 const App = () => {
   const [background, setBackground] = useState("/images/default.jpg");
 
-  const { current, hourly, daily, isLoading, error, clearError, posError, clearPosError, reset, setResetHandler, unit, setUnit, getWeather, getWeatherByLocation } = useWeather()
+  const { current, isLoading, error, clearError, posError, clearPosError} = useWeather()
 
 
   useEffect(() => {
@@ -83,18 +83,10 @@ const App = () => {
           backgroundImage: `url(${background})`,
         }}
       >
-        <TodayWeather
-          getWeather={getWeather}
-          current={current}
-          reset={reset}
-          setResetHandler={setResetHandler}
-          getWeatherByLocation={getWeatherByLocation}
-          unit={unit}
-          setUnit={setUnit}
-        />
-        <HourlyWeatherList weathers={hourly} reset={reset} unit={unit} />
-        <DailyWeatherList weathers={daily} unit={unit} reset={reset} />
-        <WeatherDetails current={current} unit={unit} reset={reset} />
+        <TodayWeather />
+        <HourlyWeatherList />
+        <DailyWeatherList />
+        <WeatherDetails />
       </div>
     </>
   );

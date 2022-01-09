@@ -1,16 +1,20 @@
 import React from "react";
+import { useWeather } from "../../context/weatherContext";
 
 import DailyWeather from "./DailyWeather";
 import "./DailyWeatherList.css";
 
-const DailyWeatherList = ({ weathers, unit, reset }) => {
+const DailyWeatherList = () => {
+
+  const { daily, reset, unit } = useWeather()
+
   return (
-    <div className={`daily ${!weathers && "initial"} ${reset && "initial"}`}>
-      {weathers && !reset && <h3>7-Day Weather Report</h3>}
+    <div className={`daily ${!daily && "initial"} ${reset && "initial"}`}>
+      {daily && !reset && <h3>7-Day Weather Report</h3>}
       <div className="daily__data">
-        {weathers &&
+        {daily &&
           !reset &&
-          weathers.map((weather, i) => {
+          daily.map((weather, i) => {
             if (i === 0) {
               return (
                 <DailyWeather

@@ -1,17 +1,13 @@
 import React, { useState, useRef } from "react";
+import { useWeather } from "../../context/weatherContext";
 import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
 import "./TodayWeather.css";
 
-const TodayWeather = ({
-  current,
-  getWeatherByLocation,
-  getWeather,
-  setResetHandler,
-  reset,
-  unit,
-  setUnit,
-}) => {
+const TodayWeather = () => {
+
+  const {current, reset, unit, setUnit, setResetHandler, getWeather, getWeatherByLocation} = useWeather()
+
   const [value, setValue] = useState("");
   const inputRef = useRef(null);
 

@@ -2,13 +2,17 @@ import React from "react";
 
 import HourlyWeather from "./HourlyWeather";
 import "./HourlyWeatherList.css";
+import {useWeather} from "../../context/weatherContext"
 
-const HourlyWeatherList = ({ weathers, reset, unit }) => {
+const HourlyWeatherList = () => {
+
+  const {hourly, unit, reset} = useWeather()
+
   return (
-    <div className={`hourly ${!weathers && "initial"} ${reset && "initial"}`}>
-      {weathers &&
+    <div className={`hourly ${!hourly && "initial"} ${reset && "initial"}`}>
+      {hourly &&
         !reset &&
-        weathers.map((weather, index) => {
+        hourly.map((weather, index) => {
           return (
             <HourlyWeather
               key={weather.dt}
