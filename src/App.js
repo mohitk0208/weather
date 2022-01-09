@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
-import TodayWeather from "./components/Today/TodayWeather";
-import HourlyWeatherList from "./components/Hourly/HourlyWeatherList";
-import DailyWeatherList from "./components/Daily/DailyWeatherList";
-import WeatherDetails from "./components/Details/WeatherDetails";
+import TodayWeather from "./components/TodayWeather";
+import HourlyWeatherList from "./components/HourlyWeatherList";
+import DailyWeatherList from "./components/DailyWeatherList";
+import WeatherDetails from "./components/WeatherDetails";
 import LoadingSpinner from "./components/helpers/LoadingSpinner";
 import { useHttpClient } from "./components/helpers/hooks/http-hook";
 import ErrorModal from "./components/helpers/ErrorModal";
