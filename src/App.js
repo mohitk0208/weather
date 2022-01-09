@@ -8,7 +8,6 @@ import LoadingSpinner from "./components/helpers/LoadingSpinner";
 import { useHttpClient } from "./components/helpers/hooks/http-hook";
 import ErrorModal from "./components/helpers/ErrorModal";
 import { usePosition } from "./components/helpers/hooks/position-hook";
-import "./App.css";
 
 const App = () => {
   const [current, setCurrent] = useState();
@@ -38,7 +37,7 @@ const App = () => {
       setHourly(completeWeatherResponseData.hourly);
       setDaily(completeWeatherResponseData.daily);
       setResetHandler(false);
-    } catch (err) {}
+    } catch (err) { }
   };
 
   const getWeatherByLocation = async () => {
@@ -96,7 +95,7 @@ const App = () => {
             setBackground(
               "/images/741.jpg"
             );
-          } else  {
+          } else {
             setBackground(
               "/images/7XX.jpg"
             );
@@ -128,7 +127,7 @@ const App = () => {
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <LoadingSpinner overlay />}
       <div
-        className="container"
+        className="w-full min-h-screen bg-blue-300 py-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: `url(${background})`,
         }}
