@@ -4,10 +4,10 @@ import TodayWeather from "./components/TodayWeather";
 import HourlyWeatherList from "./components/HourlyWeatherList";
 import DailyWeatherList from "./components/DailyWeatherList";
 import WeatherDetails from "./components/WeatherDetails";
-import LoadingSpinner from "./components/helpers/LoadingSpinner";
-import { useHttpClient } from "./components/helpers/hooks/http-hook";
-import ErrorModal from "./components/helpers/ErrorModal";
-import { usePosition } from "./components/helpers/hooks/position-hook";
+import LoadingSpinner from "./components/utilComponents/LoadingSpinner";
+import { useHttpClient } from "./hooks/http-hook";
+import ErrorModal from "./components/utilComponents/ErrorModal";
+import { usePosition } from "./hooks/position-hook";
 
 const App = () => {
   const [current, setCurrent] = useState();

@@ -1,6 +1,6 @@
 import React from "react";
 
-import Modal from "../helpers/Modal";
+import Modal from "../Modal";
 
 const ErrorModal = (props) => {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {celciusTofahrenheit,getTimeWithoutSecondsFromTimeInSeconds} from "../helpers/functions"
+import {celciusTofahrenheit,getTimeWithoutSecondsFromTimeInSeconds} from "../../utils/functions"
 
 import "./HourlyWeather.css";
 

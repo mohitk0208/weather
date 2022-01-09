@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../helpers/functions";
+import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
 import "./TodayWeather.css";
 

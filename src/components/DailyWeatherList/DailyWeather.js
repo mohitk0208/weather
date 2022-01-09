@@ -1,5 +1,5 @@
 import React from "react";
-import {celciusTofahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSeconds} from "../helpers/functions"
+import {celciusTofahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSeconds} from "../../utils/functions"
 
 import "./DailyWeather.css";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { celciusTofahrenheit } from "../helpers/functions";
+import { celciusTofahrenheit } from "../../utils/functions";
 
 import DetailsBlock from "./DetailsBlock";
 import "./WeatherDetails.css";
