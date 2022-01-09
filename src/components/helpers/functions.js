@@ -6,12 +6,12 @@
  * @return {string} fahrenheit value
  */
 export const celciusTofahrenheit = (celciusValue) => {
-	if (celciusValue === null || celciusValue === undefined) return;
-	const fahrenheitValue = Number(celciusValue) * (9 / 5) + 32;
-	return (fahrenheitValue % 1 === 0
-		? fahrenheitValue
-		: fahrenheitValue.toFixed(2)
-	).toString();
+  if (celciusValue === null || celciusValue === undefined) return;
+  const fahrenheitValue = Number(celciusValue) * (9 / 5) + 32;
+  return (fahrenheitValue % 1 === 0
+    ? fahrenheitValue
+    : fahrenheitValue.toFixed(2)
+  ).toString();
 };
 
 /**
@@ -20,8 +20,8 @@ export const celciusTofahrenheit = (celciusValue) => {
  * @return {string} Eg: Fri
  */
 export const getDayFromTimeInSeconds = (timeInSeconds) => {
-	if (timeInSeconds === null || timeInSeconds === undefined) return;
-	return new Date(timeInSeconds * 1000).toDateString().split(" ")[0];
+  if (timeInSeconds === null || timeInSeconds === undefined) return;
+  return new Date(timeInSeconds * 1000).toDateString().split(" ")[0];
 };
 
 /**
@@ -30,9 +30,9 @@ export const getDayFromTimeInSeconds = (timeInSeconds) => {
  * @return {string} Format:- Month date
  */
 export const getMonthAndDateFromTimeInSeconds = (timeInSeconds) => {
-	if (timeInSeconds === null || timeInSeconds === undefined) return;
-	const date = new Date(timeInSeconds * 1000).toDateString().split(" ");
-	return `${date[1]} ${date[2]}`;
+  if (timeInSeconds === null || timeInSeconds === undefined) return;
+  const date = new Date(timeInSeconds * 1000).toDateString().split(" ");
+  return `${date[1]} ${date[2]}`;
 };
 
 /**
@@ -41,9 +41,9 @@ export const getMonthAndDateFromTimeInSeconds = (timeInSeconds) => {
  * @return {string} Eg: 12:13 PM
  */
 export const getTimeWithoutSecondsFromTimeInSeconds = (timeInSeconds) => {
-	if (timeInSeconds === null || timeInSeconds === undefined) return;
-	const ArrayOfTime = new Date(timeInSeconds * 1000).toLocaleTimeString().split(" ");
-	const timeValues = ArrayOfTime[0].split(":");
-	const amOrPm = ArrayOfTime[1];
-	return `${timeValues[0]}:${timeValues[1]} ${amOrPm}`
+  if (timeInSeconds === null || timeInSeconds === undefined) return;
+  const ArrayOfTime = new Date(timeInSeconds * 1000).toLocaleTimeString().split(" ");
+  const timeValues = ArrayOfTime[0].split(":");
+  const amOrPm = ArrayOfTime[1];
+  return `${timeValues[0]}:${timeValues[1]} ${amOrPm}`
 };

@@ -1,35 +1,35 @@
 import { useEffect, useState } from "react";
 
 export const usePosition = () => {
-	const [position, setPosition] = useState({});
-	const [posError, setPosError] = useState();
+  const [position, setPosition] = useState({});
+  const [posError, setPosError] = useState();
 
-	const onChange = ({ coords }) => {
-		setPosition({
-			lat: coords.latitude,
-			lon: coords.longitude,
+  const onChange = ({ coords }) => {
+    setPosition({
+      lat: coords.latitude,
+      lon: coords.longitude,
         });
-	};
+  };
 
-	const OnError = (error) => {
-		setPosError(error.message);
-	};
+  const OnError = (error) => {
+    setPosError(error.message);
+  };
 
-	const clearPosError = () => {
-		setPosError(null);
-	};
+  const clearPosError = () => {
+    setPosError(null);
+  };
 
-	useEffect(() => {
-		const geo = navigator.geolocation;
-		if (!geo) {
-			setPosError("Geolocation not Supported.");
-			return;
-		}
+  useEffect(() => {
+    const geo = navigator.geolocation;
+    if (!geo) {
+      setPosError("Geolocation not Supported.");
+      return;
+    }
 
-		const watcher = geo.watchPosition(onChange, OnError);
+    const watcher = geo.watchPosition(onChange, OnError);
 
-		return () => geo.clearWatch(watcher);
-	}, []);
+    return () => geo.clearWatch(watcher);
+  }, []);
 
-	return { ...position, posError,clearPosError };
+  return { ...position, posError,clearPosError };
 };
