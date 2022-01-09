@@ -5,9 +5,9 @@ import HourlyWeatherList from "./components/HourlyWeatherList";
 import DailyWeatherList from "./components/DailyWeatherList";
 import WeatherDetails from "./components/WeatherDetails";
 import LoadingSpinner from "./components/utilComponents/LoadingSpinner";
-import { useHttpClient } from "./hooks/http-hook";
+import { useHttpClient } from "./hooks/useHttpClient";
 import ErrorModal from "./components/utilComponents/ErrorModal";
-import { usePosition } from "./hooks/position-hook";
+import { usePosition } from "./hooks/usePosition";
 
 const App = () => {
   const [current, setCurrent] = useState();
