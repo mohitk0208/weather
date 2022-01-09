@@ -5,63 +5,14 @@ import HourlyWeatherList from "./components/HourlyWeatherList";
 import DailyWeatherList from "./components/DailyWeatherList";
 import WeatherDetails from "./components/WeatherDetails";
 import LoadingSpinner from "./components/utilComponents/LoadingSpinner";
-import { useHttpClient } from "./hooks/useHttpClient";
 import ErrorModal from "./components/utilComponents/ErrorModal";
-import { usePosition } from "./hooks/usePosition";
+import { useWeather } from "./context/weatherContext";
 
 const App = () => {
-  const [current, setCurrent] = useState();
-  const [hourly, setHourly] = useState();
-  const [daily, setDaily] = useState();
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const { lat, lon, posError, clearPosError } = usePosition();
-  const [reset, setReset] = useState(false);
   const [background, setBackground] = useState("/images/default.jpg");
-  const [u, setU] = useState(true);
 
-  const getWeather = async (city) => {
-    try {
-      const currentResponseData = await sendRequest(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
-        "GET"
-      );
-      setCurrent(currentResponseData);
-      const lat = currentResponseData.coord.lat;
-      const lon = currentResponseData.coord.lon;
+  const { current, hourly, daily, isLoading, error, clearError, posError, clearPosError, reset, setResetHandler, unit, setUnit, getWeather, getWeatherByLocation } = useWeather()
 
-      const completeWeatherResponseData = await sendRequest(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
-        "GET"
-      );
-
-      setHourly(completeWeatherResponseData.hourly);
-      setDaily(completeWeatherResponseData.daily);
-      setResetHandler(false);
-    } catch (err) { }
-  };
-
-  const getWeatherByLocation = async () => {
-    try {
-      const currentResponseData = await sendRequest(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
-        "GET"
-      );
-      setCurrent(currentResponseData);
-
-      const completeWeatherResponseData = await sendRequest(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
-        "GET"
-      );
-
-      setHourly(completeWeatherResponseData.hourly);
-      setDaily(completeWeatherResponseData.daily);
-    } catch (err) {
-    }
-  };
-
-  const setResetHandler = (value) => {
-    setReset(value);
-  };
 
   useEffect(() => {
     if (current) {
@@ -138,12 +89,12 @@ const App = () => {
           reset={reset}
           setResetHandler={setResetHandler}
           getWeatherByLocation={getWeatherByLocation}
-          unit={u}
-          setUnit={setU}
+          unit={unit}
+          setUnit={setUnit}
         />
-        <HourlyWeatherList weathers={hourly} reset={reset} unit={u} />
-        <DailyWeatherList weathers={daily} unit={u} reset={reset} />
-        <WeatherDetails current={current} unit={u} reset={reset} />
+        <HourlyWeatherList weathers={hourly} reset={reset} unit={unit} />
+        <DailyWeatherList weathers={daily} unit={unit} reset={reset} />
+        <WeatherDetails current={current} unit={unit} reset={reset} />
       </div>
     </>
   );
