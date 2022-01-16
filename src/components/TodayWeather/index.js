@@ -2,54 +2,53 @@ import React from "react";
 import { useWeather } from "../../context/weatherContext";
 import { celsiusToFahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
-import "./TodayWeather.css";
-
 const TodayWeather = () => {
 
-  const {current, reset, unit} = useWeather()
+  const { current, unit } = useWeather()
 
   return (
-    <div className={`today ${!current && "initial"} ${reset && "initial"}`}>
+    <div className={`w-full px-10 pb-10 pt-28  flex justify-between bg-black/50`}>
 
+      <div className="text-white">
 
-      {!reset && (
-        <div className={`current`}>
-          {current && (
-            <div className="current__temp">
-              <div className="current__temp-current">
-                <span className="temp">
-                  {unit ? current.main.temp : celsiusToFahrenheit(current.main.temp)}
-                </span>
-                <span className="unit">&deg;{unit ? "C" : "F"}</span>
-              </div>
-              <div className="current__temp-minmax">
-                <span>
-                  {unit
-                    ? current.main.temp_min
-                    : celsiusToFahrenheit(current.main.temp_min)}
-                  &deg;{unit ? "C" : "F"}/
-                  {unit
-                    ? current.main.temp_max
-                    : celsiusToFahrenheit(current.main.temp_max)}
-                  &deg;
-                  {unit ? "C" : "F"}
-                </span>
-                <span>{"  " + getDayFromTimeInSeconds(current.dt)}</span>
-              </div>
-            </div>
-          )}
-          {current && (
-            <div className="current__weather">
-              <div className="current__weather-main">
-                {current.weather[0].main}
-              </div>
-              <div className="current__weaher-description">
-                {current.weather[0].description}
-              </div>
-            </div>
-          )}
+        <div className="text-6xl relative pb-2">
+          <span className="">
+            {unit ?
+              current ? current.main.temp : "__.__"
+              : current ? celsiusToFahrenheit(current.main.temp) : "__.__"}
+          </span>
+          <span className="text-4xl absolute top-0 left-full ">&deg;{unit ? "C" : "F"}</span>
         </div>
-      )}
+
+
+        <div className="text-center text-sm">
+          <span>
+            {unit ?
+              (current ? current.main.temp_min : "__")
+              : (current ? celsiusToFahrenheit(current.main.temp_min) : "__")}
+
+            &deg;{unit ? "C" : "F"}{" / "}
+
+            {unit
+              ? current ? current.main.temp_max : "__"
+              : current ? celsiusToFahrenheit(current.main.temp_max) : "__"}
+            &deg;
+            {unit ? "C" : "F"}
+          </span>
+          <span>{"  " + (current ? getDayFromTimeInSeconds(current.dt) : "___")}</span>
+        </div>
+      </div>
+
+
+      <div className="text-white">
+        <div className="text-5xl">
+          {current ? current.weather[0].main : "____"}
+        </div>
+        <div className="text-xl text-right">
+          {current ? current.weather[0].description : "____"}
+        </div>
+      </div>
+
     </div>
   );
 };
