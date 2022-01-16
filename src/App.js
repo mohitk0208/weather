@@ -86,7 +86,7 @@ const App = () => {
       >
         <ControlsBar />
         <TodayWeather />
-        {/* <HourlyWeatherList /> */}
+        <HourlyWeatherList />
         {/* <DailyWeatherList /> */}
         {/* <WeatherDetails /> */}
       </div>

@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 
 import HourlyWeather from "./HourlyWeather";
-import "./HourlyWeatherList.css";
-import {useWeather} from "../../context/weatherContext"
+import { useWeather } from "../../context/weatherContext"
 
 const HourlyWeatherList = () => {
 
-  const {hourly, unit, reset} = useWeather()
+  const { hourly, unit, reset } = useWeather()
+  const hourlyContainerRef = useRef()
 
   return (
-    <div className={`hourly ${!hourly && "initial"} ${reset && "initial"}`}>
-      {hourly &&
-        !reset &&
+    <div className={`flex overflow-x-auto px-8 bg-black/50 py-3 min-h-[200px]`} ref={hourlyContainerRef} >
+      {hourly ?
         hourly.map((weather, index) => {
           return (
             <HourlyWeather
@@ -22,7 +21,11 @@ const HourlyWeatherList = () => {
               unit={unit}
             />
           );
-        })}
+        }) : (
+          <div className="flex-1 flex items-center justify-center" >
+            <p className="text-white/50" >No data to show</p>
+          </div>
+        )}
     </div>
   );
 };
