@@ -3,7 +3,6 @@ import { useWeather } from "../../context/weatherContext";
 import { celsiusToFahrenheit } from "../../utils/functions";
 
 import DetailsBlock from "./DetailsBlock";
-import "./WeatherDetails.css";
 
 const WeatherDetails = () => {
 
@@ -12,14 +11,13 @@ const WeatherDetails = () => {
   return (
     <>
       <div
-        className={`details-container ${!current && "initial"} ${reset && "initial"
-          }`}
+        className={`w-full px-10 pt-5 pb-10 bg-black/50 text-white`}
       >
-        {current && !reset && <h2 className="heading">Weather Details </h2>}
+        <h2 className="text-2xl pb-4 font-semibold">Weather Details </h2>
         {current && !reset && (
-          <div className="details">
+          <div className="w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
             <DetailsBlock
-              category={"temperatre Felt"}
+              category={"Temperature Felt"}
               value={
                 unit
                   ? current.main.feels_like

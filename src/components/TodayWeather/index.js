@@ -7,7 +7,7 @@ const TodayWeather = () => {
   const { current, unit } = useWeather()
 
   return (
-    <div className={`w-full px-10 pb-10 pt-28  flex justify-between bg-black/50`}>
+    <div className={`w-full px-10 pb-10 pt-36  flex justify-between bg-black/50`}>
 
       <div className="text-white">
 

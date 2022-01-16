@@ -1,12 +1,11 @@
 import React from "react";
 
-import "./DetailsBlock.css";
 
 const DetailsBlock = ({ category, value, unit }) => {
   return (
-    <div className="details-block">
-      <div className="details-block__value">{value}<span>{unit}</span> </div>
-      <div className="details-block__category">{category}</div>
+    <div className="text-white px-3 md:px-5 lg:px-6 py-3 backdrop-blur-md border border-white/20 rounded-md">
+      <div className="text-3xl pb-1">{value}<span>{unit}</span> </div>
+      <div className="font-bold opacity-80">{category}</div>
     </div>
   );
 };

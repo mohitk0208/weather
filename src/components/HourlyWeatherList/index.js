@@ -31,7 +31,7 @@ const HourlyWeatherList = () => {
 
   return (
     <div className="relative w-screen">
-      <div className={`flex overflow-x-auto px-8 bg-black/50 py-3 min-h-[200px] no-scroll-bar`} ref={hourlyContainerRef} >
+      <div className={`flex overflow-x-auto px-8 bg-black/50 pt-5 pb-3 min-h-[200px] no-scroll-bar`} ref={hourlyContainerRef} >
         {hourly ?
           hourly.map((weather, index) => {
             return (
