@@ -79,7 +79,7 @@ const App = () => {
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <LoadingSpinner overlay />}
       <div
-        className="w-full min-h-screen bg-blue-300 pb-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed"
+        className="w-full min-h-screen bg-blue-300 pb-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed no-scroll-bar"
         style={{
           backgroundImage: `url(${background})`,
         }}
@@ -87,7 +87,7 @@ const App = () => {
         <ControlsBar />
         <TodayWeather />
         <HourlyWeatherList />
-        {/* <DailyWeatherList /> */}
+        <DailyWeatherList />
         {/* <WeatherDetails /> */}
       </div>
     </>
