@@ -1,5 +1,5 @@
 import React from "react";
-import {celciusTofahrenheit,getTimeWithoutSecondsFromTimeInSeconds} from "../../utils/functions"
+import {celsiusToFahrenheit,getTimeWithoutSecondsFromTimeInSeconds} from "../../utils/functions"
 
 import "./HourlyWeather.css";
 
@@ -18,7 +18,7 @@ const HourlyWeather = ({ weather, delay, unit }) => {
       </div>
       <div className="hour-weather__temp">
         <span>
-          {unit ? weather.temp : celciusTofahrenheit(weather.temp)} &deg;
+          {unit ? weather.temp : celsiusToFahrenheit(weather.temp)} &deg;
           {unit ? "C" : "F"}
         </span>
       </div>

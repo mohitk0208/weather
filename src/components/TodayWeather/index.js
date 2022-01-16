@@ -1,6 +1,6 @@
 import React from "react";
 import { useWeather } from "../../context/weatherContext";
-import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
+import { celsiusToFahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
 import "./TodayWeather.css";
 
@@ -18,7 +18,7 @@ const TodayWeather = () => {
             <div className="current__temp">
               <div className="current__temp-current">
                 <span className="temp">
-                  {unit ? current.main.temp : celciusTofahrenheit(current.main.temp)}
+                  {unit ? current.main.temp : celsiusToFahrenheit(current.main.temp)}
                 </span>
                 <span className="unit">&deg;{unit ? "C" : "F"}</span>
               </div>
@@ -26,11 +26,11 @@ const TodayWeather = () => {
                 <span>
                   {unit
                     ? current.main.temp_min
-                    : celciusTofahrenheit(current.main.temp_min)}
+                    : celsiusToFahrenheit(current.main.temp_min)}
                   &deg;{unit ? "C" : "F"}/
                   {unit
                     ? current.main.temp_max
-                    : celciusTofahrenheit(current.main.temp_max)}
+                    : celsiusToFahrenheit(current.main.temp_max)}
                   &deg;
                   {unit ? "C" : "F"}
                 </span>
