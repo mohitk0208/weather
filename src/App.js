@@ -7,11 +7,12 @@ import WeatherDetails from "./components/WeatherDetails";
 import LoadingSpinner from "./components/utilComponents/LoadingSpinner";
 import ErrorModal from "./components/utilComponents/ErrorModal";
 import { useWeather } from "./context/weatherContext";
+import ControlsBar from "./components/ControlsBar";
 
 const App = () => {
   const [background, setBackground] = useState("/images/default.jpg");
 
-  const { current, isLoading, error, clearError, posError, clearPosError} = useWeather()
+  const { current, isLoading, error, clearError, posError, clearPosError } = useWeather()
 
 
   useEffect(() => {
@@ -78,15 +79,16 @@ const App = () => {
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <LoadingSpinner overlay />}
       <div
-        className="w-full min-h-screen bg-blue-300 py-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed"
+        className="w-full min-h-screen bg-blue-300 pb-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: `url(${background})`,
         }}
       >
+        <ControlsBar />
         <TodayWeather />
-        <HourlyWeatherList />
-        <DailyWeatherList />
-        <WeatherDetails />
+        {/* <HourlyWeatherList /> */}
+        {/* <DailyWeatherList /> */}
+        {/* <WeatherDetails /> */}
       </div>
     </>
   );

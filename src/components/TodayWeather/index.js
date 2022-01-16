@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { useWeather } from "../../context/weatherContext";
 import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
@@ -6,60 +6,12 @@ import "./TodayWeather.css";
 
 const TodayWeather = () => {
 
-  const {current, reset, unit, setUnit, setResetHandler, getWeather, getWeatherByLocation} = useWeather()
-
-  const [value, setValue] = useState("");
-  const inputRef = useRef(null);
-
-  const handleCityWeather = async (e) => {
-    e.preventDefault();
-    inputRef.current.blur();
-    setResetHandler(true);
-    await getWeather(value, unit);
-  };
-
-  const locationHandler = async () => {
-    setResetHandler(true);
-    setValue("");
-    await getWeatherByLocation();
-    setResetHandler(false);
-  };
+  const {current, reset, unit} = useWeather()
 
   return (
     <div className={`today ${!current && "initial"} ${reset && "initial"}`}>
-      <div className="location" onClick={locationHandler}>
-        <i className="fas fa-map-marker-alt "></i>
-      </div>
-      <form onSubmit={handleCityWeather}>
-        <input
-          id="cityname"
-          type="text"
-          placeholder="CITYNAME"
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-          ref={inputRef}
-        />
-      </form>
-      <input
-        type="checkbox"
-        id="unit-choice"
-        checked={unit}
-        onChange={(e) => setUnit(e.target.checked)}
-        hidden
-      />
-      <label htmlFor="unit-choice">
-        <div className="unit-choice">
-          <div
-            className={`unit-cover ${!unit ? "celcius" : "fahrenheit"}`}
-          ></div>
-          <div className={`unit-value f ${!unit ? "active" : "disabled"}`}>
-            &deg;F
-          </div>
-          <div className={`unit-value c ${unit ? "active" : "disabled"}`}>
-            &deg;C
-          </div>
-        </div>
-      </label>
+
+
       {!reset && (
         <div className={`current`}>
           {current && (
