@@ -4,8 +4,8 @@ import { celsiusToFahrenheit, getTimeWithoutSecondsFromTimeInSeconds } from "../
 
 const HourlyWeather = ({ weather, unit }) => {
   return (
-    <div className={`min-w-[130px] border backdrop-blur-sm border-white/10 rounded-md mx-1 px-2 py-1 text-center text-white`}>
-      <div className="">{getTimeWithoutSecondsFromTimeInSeconds(weather.dt)}</div>
+    <div className={`min-w-[140px] border backdrop-blur-sm border-white/10 rounded-md mx-1 px-3 py-2 text-center text-white`}>
+      <div className="text-sm font-bold opacity-80">{getTimeWithoutSecondsFromTimeInSeconds(weather.dt)}</div>
       <div className="">
         <img
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
