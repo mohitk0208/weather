@@ -41,7 +41,7 @@ const TodayWeather = () => {
 
 
       <div className="text-white">
-        <div className="text-5xl">
+        <div className="text-5xl pb-3">
           {current ? current.weather[0].main : "____"}
         </div>
         <div className="text-xl text-right">
