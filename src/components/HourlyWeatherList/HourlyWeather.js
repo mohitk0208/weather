@@ -4,7 +4,7 @@ import { celsiusToFahrenheit, getTimeWithoutSecondsFromTimeInSeconds } from "../
 
 const HourlyWeather = ({ weather, unit }) => {
   return (
-    <div className={`min-w-[140px] border backdrop-blur-sm border-white/10 rounded-md mx-1 px-3 py-2 text-center text-white`}>
+    <div className={`min-w-[140px] border backdrop-blur-sm border-white/10 rounded-md mx-1 px-3 py-2 text-center text-white bg-black/[0.03]`}>
       <div className="text-sm font-bold opacity-80">{getTimeWithoutSecondsFromTimeInSeconds(weather.dt)}</div>
       <div className="">
         <img

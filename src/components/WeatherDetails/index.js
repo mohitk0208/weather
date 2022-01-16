@@ -11,37 +11,35 @@ const WeatherDetails = () => {
   return (
     <>
       <div
-        className={`w-full px-10 pt-5 pb-10 bg-black/50 text-white`}
+        className={`w-full px-10 pt-5 pb-10 bg-transparent text-white`}
       >
         <h2 className="text-2xl pb-4 font-semibold">Weather Details </h2>
-        {current && !reset && (
-          <div className="w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
-            <DetailsBlock
-              category={"Temperature Felt"}
-              value={
-                unit
-                  ? current.main.feels_like
-                  : celsiusToFahrenheit(current.main.feels_like)
-              }
-              unit={unit ? "°C" : "°F"}
-            />
-            <DetailsBlock
-              category={"Visibility"}
-              value={Number(current.visibility) / 1000}
-              unit={" km"}
-            />
-            <DetailsBlock
-              category={"Air Pressure"}
-              value={current.main.pressure}
-              unit={" hPa"}
-            />
-            <DetailsBlock
-              category={"Humidity"}
-              value={current.main.humidity}
-              unit={" %"}
-            />
-          </div>
-        )}
+        <div className="w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
+          <DetailsBlock
+            category={"Temperature Felt"}
+            value={
+              unit
+                ? current ? current.main.feels_like : "_____"
+                : current ? celsiusToFahrenheit(current.main.feels_like) : "_____"
+            }
+            unit={unit ? "°C" : "°F"}
+          />
+          <DetailsBlock
+            category={"Visibility"}
+            value={current ? Number(current.visibility ) / 1000 : "_____"}
+            unit={" km"}
+          />
+          <DetailsBlock
+            category={"Air Pressure"}
+            value={current ? current.main.pressure : "___"}
+            unit={" hPa"}
+          />
+          <DetailsBlock
+            category={"Humidity"}
+            value={current ? current.main.humidity : "___"}
+            unit={" %"}
+          />
+        </div>
       </div>
     </>
   );

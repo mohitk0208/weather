@@ -79,17 +79,22 @@ const App = () => {
       <ErrorModal error={error} onClear={clearError} />
       {isLoading && <LoadingSpinner overlay />}
       <div
-        className="w-full min-h-screen bg-blue-300 pb-5 overflow-hidden bg-no-repeat bg-cover bg-center bg-fixed no-scroll-bar font-mono"
+        className="bg-cover bg-fixed bg-center"
         style={{
           backgroundImage: `url(${background})`,
         }}
       >
-        <ControlsBar />
-        <TodayWeather />
-        <HourlyWeatherList />
-        <DailyWeatherList />
-        <WeatherDetails />
+        <div
+          className="w-full min-h-screen pb-5 overflow-x-hidden overflow-y-auto bg-no-repeat bg-center no-scroll-bar font-mono bg-gradient-to-b from-transparent via-black/50 to-black/80"
+        >
+          <ControlsBar />
+          <TodayWeather />
+          <HourlyWeatherList />
+          <DailyWeatherList />
+          <WeatherDetails />
+        </div>
       </div>
+
     </>
   );
 };

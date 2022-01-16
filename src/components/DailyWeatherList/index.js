@@ -8,7 +8,7 @@ const DailyWeatherList = () => {
   const { daily, unit } = useWeather()
 
   return (
-    <div className={`w-full pt-10 pb-10 px-8 bg-black/50 text-white`}>
+    <div className={`w-full pt-10 pb-10 px-8 bg-transparent text-white`}>
       <h3 className="text-2xl pl-2 py-3 font-semibold text-white/90 " >7-Day Weather Report</h3>
       <div className="flex flex-col gap-1.5 min-h-[200px] ">
         {daily ? (

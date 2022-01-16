@@ -3,7 +3,7 @@ import {celsiusToFahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSec
 
 const DailyWeather = ({ weather, day, unit }) => {
   return (
-    <div className="grid grid-cols-5 text-center justify-evenly items-center backdrop-blur-sm border border-white/20 rounded-md">
+    <div className="grid grid-cols-5 text-center justify-evenly items-center backdrop-blur-sm border border-white/20 rounded-md bg-black/[0.03]">
       <div className="">{getMonthAndDateFromTimeInSeconds(weather.dt)}</div>
       <div className="">{day ? day : getDayFromTimeInSeconds(weather.dt)}</div>
       <div className="h-12">
