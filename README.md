@@ -52,7 +52,7 @@ Weather app works totally fine in any browsers it uses the following technologie
 * [JavaScript](https://www.javascript.com/)
 <!-- * [Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API) -->
 <!-- * [Indexed DB](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API) -->
-* [tailwindcss]()
+* [tailwindcss](https://tailwindcss.com/)
 * [openweathermap api](https://openweathermap.org/api)
 
 <p align="center">
@@ -91,9 +91,9 @@ Contributions are what make the open source community such an amazing place to b
 
 
 <!-- LICENSE -->
-<!-- ## License -->
+## License
 
-<!-- Distributed under the MIT License. See `LICENSE` for more information. -->
+Distributed under the MIT License. See `LICENSE` for more information.
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
@@ -107,4 +107,4 @@ Contributions are what make the open source community such an amazing place to b
 [issues-shield]: https://img.shields.io/github/issues/mohitk0208/weather.svg?style=for-the-badge
 [issues-url]: https://github.com/mohitk0208/weather/issues
 [license-shield]: https://img.shields.io/github/license/mohitk0208/weather.svg?style=for-the-badge
-[license-url]: https://github.com/mohitk0208/weather/blob/master/LICENSE.txt
+[license-url]: https://github.com/mohitk0208/weather/blob/master/LICENSE
