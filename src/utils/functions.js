@@ -5,7 +5,7 @@
  * @param {string | Number} celciusValue
  * @return {string} fahrenheit value
  */
-export const celciusTofahrenheit = (celciusValue) => {
+export const celsiusToFahrenheit = (celciusValue) => {
   if (celciusValue === null || celciusValue === undefined) return;
   const fahrenheitValue = Number(celciusValue) * (9 / 5) + 32;
   return (fahrenheitValue % 1 === 0

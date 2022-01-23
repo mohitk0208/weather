@@ -1,103 +1,54 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import { useWeather } from "../../context/weatherContext";
-import { celciusTofahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
-
-import "./TodayWeather.css";
+import { celsiusToFahrenheit, getDayFromTimeInSeconds } from "../../utils/functions";
 
 const TodayWeather = () => {
 
-  const {current, reset, unit, setUnit, setResetHandler, getWeather, getWeatherByLocation} = useWeather()
-
-  const [value, setValue] = useState("");
-  const inputRef = useRef(null);
-
-  const handleCityWeather = async (e) => {
-    e.preventDefault();
-    inputRef.current.blur();
-    setResetHandler(true);
-    await getWeather(value, unit);
-  };
-
-  const locationHandler = async () => {
-    setResetHandler(true);
-    setValue("");
-    await getWeatherByLocation();
-    setResetHandler(false);
-  };
+  const { current, unit } = useWeather()
 
   return (
-    <div className={`today ${!current && "initial"} ${reset && "initial"}`}>
-      <div className="location" onClick={locationHandler}>
-        <i className="fas fa-map-marker-alt "></i>
+    <div className={`w-full px-10 pb-10 pt-36  flex justify-between bg-transparent`}>
+
+      <div className="text-white">
+
+        <div className="text-6xl relative pb-2">
+          <span className="">
+            {unit ?
+              current ? current.main.temp : "__.__"
+              : current ? celsiusToFahrenheit(current.main.temp) : "__.__"}
+          </span>
+          <span className="text-4xl absolute top-0 left-full ">&deg;{unit ? "C" : "F"}</span>
+        </div>
+
+
+        <div className="text-center text-sm">
+          <span>
+            {unit ?
+              (current ? current.main.temp_min : "__")
+              : (current ? celsiusToFahrenheit(current.main.temp_min) : "__")}
+
+            &deg;{unit ? "C" : "F"}{" / "}
+
+            {unit
+              ? current ? current.main.temp_max : "__"
+              : current ? celsiusToFahrenheit(current.main.temp_max) : "__"}
+            &deg;
+            {unit ? "C" : "F"}
+          </span>
+          <span>{"  " + (current ? getDayFromTimeInSeconds(current.dt) : "___")}</span>
+        </div>
       </div>
-      <form onSubmit={handleCityWeather}>
-        <input
-          id="cityname"
-          type="text"
-          placeholder="CITYNAME"
-          onChange={(e) => setValue(e.target.value)}
-          value={value}
-          ref={inputRef}
-        />
-      </form>
-      <input
-        type="checkbox"
-        id="unit-choice"
-        checked={unit}
-        onChange={(e) => setUnit(e.target.checked)}
-        hidden
-      />
-      <label htmlFor="unit-choice">
-        <div className="unit-choice">
-          <div
-            className={`unit-cover ${!unit ? "celcius" : "fahrenheit"}`}
-          ></div>
-          <div className={`unit-value f ${!unit ? "active" : "disabled"}`}>
-            &deg;F
-          </div>
-          <div className={`unit-value c ${unit ? "active" : "disabled"}`}>
-            &deg;C
-          </div>
+
+
+      <div className="text-white">
+        <div className="text-5xl pb-3">
+          {current ? current.weather[0].main : "____"}
         </div>
-      </label>
-      {!reset && (
-        <div className={`current`}>
-          {current && (
-            <div className="current__temp">
-              <div className="current__temp-current">
-                <span className="temp">
-                  {unit ? current.main.temp : celciusTofahrenheit(current.main.temp)}
-                </span>
-                <span className="unit">&deg;{unit ? "C" : "F"}</span>
-              </div>
-              <div className="current__temp-minmax">
-                <span>
-                  {unit
-                    ? current.main.temp_min
-                    : celciusTofahrenheit(current.main.temp_min)}
-                  &deg;{unit ? "C" : "F"}/
-                  {unit
-                    ? current.main.temp_max
-                    : celciusTofahrenheit(current.main.temp_max)}
-                  &deg;
-                  {unit ? "C" : "F"}
-                </span>
-                <span>{"  " + getDayFromTimeInSeconds(current.dt)}</span>
-              </div>
-            </div>
-          )}
-          {current && (
-            <div className="current__weather">
-              <div className="current__weather-main">
-                {current.weather[0].main}
-              </div>
-              <div className="current__weaher-description">
-                {current.weather[0].description}
-              </div>
-            </div>
-          )}
+        <div className="text-xl text-right">
+          {current ? current.weather[0].description : "____"}
         </div>
-      )}
+      </div>
+
     </div>
   );
 };

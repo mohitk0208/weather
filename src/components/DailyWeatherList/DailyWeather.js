@@ -1,23 +1,22 @@
 import React from "react";
-import {celciusTofahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSeconds} from "../../utils/functions"
-
-import "./DailyWeather.css";
+import {celsiusToFahrenheit,getDayFromTimeInSeconds,getMonthAndDateFromTimeInSeconds} from "../../utils/functions"
 
 const DailyWeather = ({ weather, day, unit }) => {
   return (
-    <div className="days">
-      <div className="days__date">{getMonthAndDateFromTimeInSeconds(weather.dt)}</div>
-      <div className="days__day">{day ? day : getDayFromTimeInSeconds(weather.dt)}</div>
-      <div className="days__icon">
+    <div className="grid grid-cols-5 text-center justify-evenly items-center backdrop-blur-sm border border-white/20 rounded-md bg-black/[0.03]">
+      <div className="">{getMonthAndDateFromTimeInSeconds(weather.dt)}</div>
+      <div className="">{day ? day : getDayFromTimeInSeconds(weather.dt)}</div>
+      <div className="h-12">
         <img
           src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
           alt={weather.weather[0].icon}
+          className="w-full h-full object-contain"
         />
       </div>
-      <div className="days__main">{weather.weather[0].main}</div>
-      <div className="days__minmax">
-        {unit ? weather.temp.max : celciusTofahrenheit(weather.temp.max)}/
-        {unit ? weather.temp.min : celciusTofahrenheit(weather.temp.min)}&deg;
+      <div className="">{weather.weather[0].main}</div>
+      <div className="">
+        {unit ? weather.temp.max : celsiusToFahrenheit(weather.temp.max)}/
+        {unit ? weather.temp.min : celsiusToFahrenheit(weather.temp.min)}&deg;
         {unit ? "C" : "F"}
       </div>
     </div>

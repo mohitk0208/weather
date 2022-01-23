@@ -2,18 +2,16 @@ import React from "react";
 import { useWeather } from "../../context/weatherContext";
 
 import DailyWeather from "./DailyWeather";
-import "./DailyWeatherList.css";
 
 const DailyWeatherList = () => {
 
-  const { daily, reset, unit } = useWeather()
+  const { daily, unit } = useWeather()
 
   return (
-    <div className={`daily ${!daily && "initial"} ${reset && "initial"}`}>
-      {daily && !reset && <h3>7-Day Weather Report</h3>}
-      <div className="daily__data">
-        {daily &&
-          !reset &&
+    <div className={`w-full pt-10 pb-10 px-8 bg-transparent text-white`}>
+      <h3 className="text-2xl pl-2 py-3 font-semibold text-white/90 " >7-Day Weather Report</h3>
+      <div className="flex flex-col gap-1.5 min-h-[200px] ">
+        {daily ? (
           daily.map((weather, i) => {
             if (i === 0) {
               return (
@@ -29,7 +27,11 @@ const DailyWeatherList = () => {
             return (
               <DailyWeather key={weather.dt} weather={weather} unit={unit} />
             );
-          })}
+          })) : (
+          <div className="flex-1 w-full h-full flex items-center justify-center" >
+            <p className="text-white/50" >No data to show</p>
+          </div>
+        )}
       </div>
     </div>
   );
