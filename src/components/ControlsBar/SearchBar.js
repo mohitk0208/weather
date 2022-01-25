@@ -25,7 +25,7 @@ function SearchBar({ value, setValue, className }) {
         className={`block flex-1 px-2 py-1 bg-transparent border-b border-b-transparent focus:border-b-white w-100 outline-none text-white text-center scale-110 focus:scale-100 transition-all duration-200 ease-in-out`}
       />
       <button type="submit" className="mx-auto outline-none focus:scale-110 hover:scale-110 transition-all duration-200 ease-in-out opacity-50 focus:opacity-100 text-white hover:opacity-100 hover:shadow-sm " >
-        <SearchIcon className="w-8 h-8 p-1" />
+        <SearchIcon className="w-7 sm:w-8 h-7 sm:h-8 p-1" />
       </button>
     </form>
   )
