@@ -4,8 +4,6 @@ function UnitSwitch() {
 
   const { unit, setUnit } = useWeather()
 
-  console.log(unit)
-
   return (
     <>
       <input
