@@ -1,7 +1,7 @@
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import { useWeather } from "../../context/weatherContext";
 
-function LocationButton({ setValue }) {
+function LocationButton({ setValue, className}) {
 
   const { setResetHandler, getWeatherByLocation } = useWeather()
 
@@ -13,8 +13,8 @@ function LocationButton({ setValue }) {
   }
 
   return (
-    <div>
-      <LocationMarkerIcon className="h-8 w-8 text-white hover:shadow-sm hover:text-gray-200 transition-colors duration-200 ease-in-out cursor-pointer " onClick={locationHandler} />
+    <div className={`flex items-center ${className} `}>
+      <LocationMarkerIcon className={`h-8 w-8 text-white hover:shadow-sm hover:text-gray-200 transition-colors duration-200 ease-in-out cursor-pointer`} onClick={locationHandler} />
     </div>
   )
 }
