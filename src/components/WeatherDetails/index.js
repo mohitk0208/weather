@@ -6,7 +6,7 @@ import DetailsBlock from "./DetailsBlock";
 
 const WeatherDetails = () => {
 
-  const { current, unit, reset } = useWeather()
+  const { current, unit } = useWeather()
 
   return (
     <>
@@ -14,7 +14,7 @@ const WeatherDetails = () => {
         className={`w-full px-10 pt-5 pb-10 bg-transparent text-white`}
       >
         <h2 className="text-2xl pb-4 font-semibold">Weather Details </h2>
-        <div className="w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
+        <div className="w-full md:w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
           <DetailsBlock
             category={"Temperature Felt"}
             value={
