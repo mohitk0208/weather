@@ -11,10 +11,10 @@ const WeatherDetails = () => {
   return (
     <>
       <div
-        className={`w-full px-10 pt-5 pb-10 bg-transparent text-white`}
+        className={`w-full px-4 sm:px-10 pt-5 pb-10 bg-transparent text-white`}
       >
-        <h2 className="text-2xl pb-4 font-semibold">Weather Details </h2>
-        <div className="w-full md:w-10/12 mx-auto grid grid-cols-2 grid-rows-2 gap-2 ">
+        <h2 className="text-lg sm:text-2xl pb-4 font-semibold">Weather Details </h2>
+        <div className="w-full md:w-10/12 mx-auto grid grid-cols-1 grid-rows-4 sm:grid-cols-2 sm:grid-rows-2 gap-2 ">
           <DetailsBlock
             category={"Temperature Felt"}
             value={
