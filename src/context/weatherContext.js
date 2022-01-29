@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import { useHttpClient } from "../hooks/useHttpClient"
 import { usePosition } from "../hooks/usePosition"
+import { useQueryString } from "../hooks/useQueryString"
 
 const WeatherContext = createContext({})
 
@@ -15,7 +16,7 @@ function WeatherProvider({ children }) {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { lat, lon, posError, clearPosError } = usePosition();
   const [reset, setReset] = useState(false);
-  const [unit, setUnit] = useState(true);
+  const [unit, setUnit] = useQueryString("unit", true);
 
   async function getWeather(city) {
     try {
