@@ -1,18 +1,22 @@
 import { SearchIcon } from "@heroicons/react/solid"
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useWeather } from "../../context/weatherContext"
 
-function SearchBar({ value, setValue, className }) {
+function SearchBar({ className }) {
 
-  const { setResetHandler, getWeather, unit } = useWeather()
+  const { city, setCity } = useWeather()
   const inputRef = useRef()
+  const [value, setValue] = useState(city || "")
 
   async function handleSubmit(e) {
     e.preventDefault()
     inputRef.current.blur();
-    setResetHandler(true);
-    await getWeather(value, unit);
+    setCity(value)
   }
+
+  useEffect(() => {
+    setValue(city)
+  }, [city])
 
   return (
     <form onSubmit={handleSubmit} className={`flex justify-center items-center gap-2 ${className}`}>

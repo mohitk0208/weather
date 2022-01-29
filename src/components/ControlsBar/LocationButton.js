@@ -1,15 +1,12 @@
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import { useWeather } from "../../context/weatherContext";
 
-function LocationButton({ setValue, className}) {
+function LocationButton({ className}) {
 
-  const { setResetHandler, getWeatherByLocation } = useWeather()
+  const { setCity } = useWeather()
 
   const locationHandler = async () => {
-    setResetHandler(true);
-    setValue("LOCATION")
-    await getWeatherByLocation()
-    setResetHandler(false)
+    setCity("LOCATION")
   }
 
   return (

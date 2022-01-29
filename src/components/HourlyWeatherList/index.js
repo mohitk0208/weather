@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
 
 const HourlyWeatherList = () => {
 
-  const { hourly, unit, reset } = useWeather()
+  const { hourly, unit } = useWeather()
   const hourlyContainerRef = useRef()
 
   function scrollLeft() {
@@ -38,7 +38,6 @@ const HourlyWeatherList = () => {
               <HourlyWeather
                 key={weather.dt}
                 weather={weather}
-                reset={reset}
                 unit={unit}
               />
             );

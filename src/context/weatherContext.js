@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { useHttpClient } from "../hooks/useHttpClient"
 import { usePosition } from "../hooks/usePosition"
+import { useQueryString } from "../hooks/useQueryString"
 
 const WeatherContext = createContext({})
 
@@ -14,10 +15,10 @@ function WeatherProvider({ children }) {
   const [daily, setDaily] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { lat, lon, posError, clearPosError } = usePosition();
-  const [reset, setReset] = useState(false);
-  const [unit, setUnit] = useState(true);
+  const [unit, setUnit] = useQueryString("unit", true);
+  const [city, setCity] = useQueryString("city", "");
 
-  async function getWeather(city) {
+  const getWeather = useCallback(async (city) => {
     try {
       const currentResponseData = await sendRequest(
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
@@ -34,11 +35,17 @@ function WeatherProvider({ children }) {
 
       setHourly(completeWeatherResponseData.hourly);
       setDaily(completeWeatherResponseData.daily);
-      setReset(false);
     } catch (err) { }
-  };
+  }, [sendRequest]);
 
-  const getWeatherByLocation = async () => {
+
+
+  const getWeatherByLocation = useCallback(async () => {
+
+    if(!lat || !lon) {
+      return
+    }
+
     try {
       const currentResponseData = await sendRequest(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
@@ -55,11 +62,23 @@ function WeatherProvider({ children }) {
       setDaily(completeWeatherResponseData.daily);
     } catch (err) {
     }
-  };
+  }, [sendRequest, lat, lon])
 
-  const setResetHandler = (val) => {
-    setReset(val)
-  }
+
+
+  useEffect(() => {
+
+    if (city) {
+      if (city === "LOCATION") {
+        getWeatherByLocation()
+      } else {
+        getWeather(city)
+      }
+    }
+
+  }, [city, getWeather, getWeatherByLocation])
+
+
   const value = {
     current,
     hourly,
@@ -69,12 +88,12 @@ function WeatherProvider({ children }) {
     clearError,
     posError,
     clearPosError,
-    reset,
-    setResetHandler,
     unit,
     setUnit,
     getWeather,
-    getWeatherByLocation
+    getWeatherByLocation,
+    city,
+    setCity
   }
 
   return <WeatherContext.Provider value={value} >
