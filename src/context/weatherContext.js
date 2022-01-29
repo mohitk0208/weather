@@ -2,6 +2,7 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 import { useHttpClient } from "../hooks/useHttpClient"
 import { usePosition } from "../hooks/usePosition"
 import { useQueryString } from "../hooks/useQueryString"
+import { delay } from "../utils/functions"
 
 const WeatherContext = createContext({})
 
@@ -16,7 +17,7 @@ function WeatherProvider({ children }) {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { lat, lon, posError, clearPosError } = usePosition();
   const [unit, setUnit] = useQueryString("unit", true);
-  const [city, setCity] = useQueryString("city", null);
+  const [city, setCity] = useQueryString("city", "");
 
   const getWeather = useCallback(async (city) => {
     try {
@@ -41,6 +42,11 @@ function WeatherProvider({ children }) {
 
 
   const getWeatherByLocation = useCallback(async () => {
+
+    if(!lat || !lon) {
+      return
+    }
+
     try {
       const currentResponseData = await sendRequest(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.REACT_APP_OPENWEATHER_API}`,
