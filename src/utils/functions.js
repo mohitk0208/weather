@@ -1,3 +1,5 @@
+import queryString from 'query-string';
+
 /**
  * function to convert temperature from degree celcius to fahrenheit.
  * with decimal place rounded to two places.
@@ -47,3 +49,41 @@ export const getTimeWithoutSecondsFromTimeInSeconds = (timeInSeconds) => {
   const amOrPm = ArrayOfTime[1];
   return `${timeValues[0]}:${timeValues[1]} ${amOrPm}`
 };
+
+
+export const setQueryStringValue = (key, value) => {
+
+  /**
+   * get current url
+   * get the previous query strings (parsed)
+   * add new key value pair
+   * then stringify the new query strings
+   * then add the new query strings to the url
+   *
+   */
+
+  const parsed = queryString.parse(window.location.search);
+  console.log("parsed", parsed);
+
+  parsed[key] = value;
+  const stringified = queryString.stringify(parsed);
+  console.log("stringified", stringified);
+
+  window.history.pushState({}, "", `${window.location.pathname}?${stringified}`);
+}
+
+export const getQueryStringValue = (key) => {
+
+  /**
+   * get current url
+   * get the previous query strings (parsed)
+   * get the value of the key
+   *
+   */
+
+  const parsed = queryString.parse(window.location.search);
+  console.log("parsed", parsed);
+
+  return parsed[key];
+
+}
