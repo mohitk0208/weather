@@ -2,7 +2,6 @@ import React, { createContext, useCallback, useContext, useEffect, useState } fr
 import { useHttpClient } from "../hooks/useHttpClient"
 import { usePosition } from "../hooks/usePosition"
 import { useQueryString } from "../hooks/useQueryString"
-import { delay } from "../utils/functions"
 
 const WeatherContext = createContext({})
 
