@@ -62,11 +62,18 @@ export const setQueryStringValue = (key, value) => {
    *
    */
 
-  const parsed = queryString.parse(window.location.search);
+  const queryParsed = queryString.parse(window.location.search);
+  let parsed = {} ;
+
+  if (queryParsed.data) {
+    parsed = JSON.parse(queryParsed.data);
+  }
   console.log("parsed", parsed);
 
   parsed[key] = value;
-  const stringified = queryString.stringify(parsed);
+
+
+  const stringified = queryString.stringify({data: JSON.stringify(parsed)});
   console.log("stringified", stringified);
 
   window.history.pushState({}, "", `${window.location.pathname}?${stringified}`);
@@ -81,8 +88,15 @@ export const getQueryStringValue = (key) => {
    *
    */
 
-  const parsed = queryString.parse(window.location.search);
-  console.log("parsed", parsed);
+  const stringified = queryString.parse(window.location.search);
+  // console.log("stringified at parse", stringified);
+  let parsed = {}
+
+  if (stringified.data) {
+    parsed = JSON.parse(stringified.data);
+  }
+
+  // console.log("parsed", parsed);
 
   return parsed[key];
 
