@@ -3,13 +3,10 @@ import { useWeather } from "../../context/weatherContext";
 
 function LocationButton({ setValue, className}) {
 
-  const { setResetHandler, getWeatherByLocation } = useWeather()
+  const { setCity } = useWeather()
 
   const locationHandler = async () => {
-    setResetHandler(true);
-    setValue("LOCATION")
-    await getWeatherByLocation()
-    setResetHandler(false)
+    setCity("LOCATION")
   }
 
   return (
