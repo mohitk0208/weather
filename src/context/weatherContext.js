@@ -15,7 +15,6 @@ function WeatherProvider({ children }) {
   const [daily, setDaily] = useState();
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const { lat, lon, posError, clearPosError } = usePosition();
-  const [reset, setReset] = useState(false);
   const [unit, setUnit] = useQueryString("unit", true);
   const [city, setCity] = useQueryString("city", null);
 
@@ -36,7 +35,6 @@ function WeatherProvider({ children }) {
 
       setHourly(completeWeatherResponseData.hourly);
       setDaily(completeWeatherResponseData.daily);
-      setReset(false);
     } catch (err) { }
   }, [sendRequest]);
 
@@ -76,10 +74,6 @@ function WeatherProvider({ children }) {
   }, [city, getWeather, getWeatherByLocation])
 
 
-
-  const setResetHandler = (val) => {
-    setReset(val)
-  }
   const value = {
     current,
     hourly,
@@ -89,8 +83,6 @@ function WeatherProvider({ children }) {
     clearError,
     posError,
     clearPosError,
-    reset,
-    setResetHandler,
     unit,
     setUnit,
     getWeather,

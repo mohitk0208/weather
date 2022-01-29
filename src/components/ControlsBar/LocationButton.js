@@ -1,7 +1,7 @@
 import { LocationMarkerIcon } from "@heroicons/react/solid";
 import { useWeather } from "../../context/weatherContext";
 
-function LocationButton({ setValue, className}) {
+function LocationButton({ className}) {
 
   const { setCity } = useWeather()
 
